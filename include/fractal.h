@@ -1,11 +1,15 @@
-# ifndef FRACTOL_H
-# define FRACTOL_H
-# define WIDTH 900
-# define LENGTH 900
-# include <stdlib.h>
-# include "libft.h"
-# include "math.h"
-# include "pthread.h"
+#ifndef FRACTAL_H
+#define FRACTAL_H
+
+#define WIDTH 900
+#define LENGTH 900
+#include <stdlib.h>
+#include "libft.h"
+#include "math.h"
+#include "pthread.h"
+#include "../minilibx/mlx.h"
+
+#include <stdio.h>
 
 typedef struct s_fractal
 {
@@ -31,4 +35,14 @@ typedef struct s_fractal
 	int color;
 	int mouse_julia;
 
-}             t_fractal
+}             t_fractal;
+
+void mandelbrot_setting(t_fractal *i);
+void mandelbrot(t_fractal *i);
+
+int key_operate(int key, t_fractal *i);
+int key_mouse(int key, t_fractal *i);
+int deal_key(int key, t_fractal *i);
+
+int exit_success(void);
+int exit_failure(void);

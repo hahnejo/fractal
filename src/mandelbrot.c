@@ -1,3 +1,5 @@
+#include "fractal.h"
+
 void mandelbrot_setting(t_fractal *i)
 {
 	i->iter_max = 45;

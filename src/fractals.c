@@ -9,6 +9,7 @@ void	correct_usage(void)
 void	window_init(t_fractal *i)
 {
 	i->mlx = mlx_init();
+	printf("mlx_init complete");
 	i->win = mlx_new_window(i->mlx, WIDTH, LENGTH, "fractal");
 	i->image = mlx_new_image(i->mlx, WIDTH, LENGTH);
 	i->image_ptr = mlx_get_data_addr(i->image, &i->bpp, &i->s_l, &i->endian);
@@ -38,14 +39,14 @@ int		main(int argc, char **argv)
 {
 	t_fractal *i;
 
-	if (!(i = (t_fractal *)malloc(sizeof(t_fractal)))
+	if (!(i = (t_fractal *)malloc(sizeof(t_fractal))))
 		return (-1);
 	if (argc == 2)
 	{
 		window_init(i);
 		if (param_check(argv, i) == 0)
 			return (0);
-		run_window();
+		run_window(i);
 	}
 	else
 		correct_usage();

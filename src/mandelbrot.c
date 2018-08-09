@@ -1,11 +1,13 @@
 void mandelbrot_setting(t_fractal *i)
 {
-  i->iter_max = 45;
-  i->color = ;
+	i->iter_max = 45;
+	i->color = 265;
+	i->x1 = -2.05;
+	i->y1 = -1.3;
 }
 
-void mandelbrot()
+void mandelbrot(t_fractal *i)
 {
-  z_real = z_real * z_real - z_im * z_im + c_real;
-  z_im = 2 * z_real * z_im + c_im;
+	i->z_real = i->z_real * i->z_real - i->z_image * i->z_image + i->c_real;
+	i->z_image = 2 * i->z_real * i->z_image + i->c_image;
 }

@@ -26,12 +26,12 @@ int		param_check(char **argv, t_fractal *i)
 	return (1);
 }
 
-void	run_window()
+void	run_window(t_fractal *i)
 {
-	mlx_hook();
-	mlx_key_hook();
-	mlx_mouse_hook();
-	mlx_loop();
+	mlx_hook(i->win, 4, 4, deal_key, i);
+	mlx_key_hook(i->win, deal_key, i);
+	mlx_mouse_hook(i->win, deal_key, i);
+	mlx_loop(i->mlx);
 }
 
 int		main(int argc, char **argv)

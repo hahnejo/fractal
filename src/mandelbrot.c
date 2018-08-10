@@ -1,6 +1,6 @@
 #include "fractal.h"
 
-void mandelbrot_setting(t_fractal *i)
+void	mandelbrot_setting(t_fractal *i)
 {
 	i->iter_max = 45;
 	i->color = 265;
@@ -29,7 +29,7 @@ void	calc_mandelbrot(t_fractal *i)
 		put_image(i, i->x, i->y, 0);
 }
 
-void mandelbrot(t_fractal *i)
+void	process_mandelbrot(t_fractal *i)
 {
 	if (i->f_type == 0)
 	{

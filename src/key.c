@@ -11,7 +11,7 @@
 //
 // int deal_key(int key, t_fractal *i)
 // {
-// 	key == 53 ? key_operate(key, i) : 0;
+	key == 53 ? key_operate(key, i) : 0;
 //
 // 	key == mouse key ? key_mouse(key, i) : 0;
 //

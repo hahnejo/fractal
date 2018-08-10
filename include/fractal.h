@@ -27,13 +27,18 @@ typedef struct s_fractal
 	double x2;
 	double y1;
 	double y2;
+	double zoom;
+	double temp;
+
 	int f_type;
 	int endian;
 	int bpp;
 	int s_l;
 	int iter;
+	int iter_max;
 	int color;
 	int mouse_julia;
+
 
 }             t_fractal;
 

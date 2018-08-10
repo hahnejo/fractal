@@ -17,13 +17,13 @@ void	window_init(t_fractal *i)
 
 int		param_check(char **argv, t_fractal *i)
 {
-	if (argv[1] == "mandelbrot")
-		i->f_type = 0;
-	else if (argv[1] == "julia")
-		i->f_type = 1;
-	else
+	ft_strcmp(argv[1], "mandelbrot") == 0 ? i->f_type = 0 : 0;
+	ft_strcmp(argv[1], "julia") == 0 ? i->f_type = 1 : 0;
+	if (i->f_type != 0 && i->f_type != 1)
+	{
 		correct_usage();
 		return (0);
+	}
 	return (1);
 }
 

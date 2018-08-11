@@ -17,6 +17,7 @@ typedef struct s_fractal
 	void *win;
 	void *image;
 	void *image_ptr;
+
 	double c_real;
 	double c_image;
 	double z_real;
@@ -29,6 +30,7 @@ typedef struct s_fractal
 	double y2;
 	double zoom;
 	double temp;
+	double y_max;
 
 	int f_type;
 	int endian;
@@ -43,7 +45,8 @@ typedef struct s_fractal
 }             t_fractal;
 
 void mandelbrot_setting(t_fractal *i);
-void mandelbrot(t_fractal *i);
+void *mandelbrot_process(void *tab);
+void mandelbrot_pthread(t_fractal *i);
 
 int key_operate(int key, t_fractal *i);
 int key_mouse(int key, t_fractal *i);
@@ -51,3 +54,9 @@ int deal_key(int key, t_fractal *i);
 
 int exit_success(void);
 int exit_failure(void);
+void display(t_fractal *i);
+void	put_image(t_fractal *i, int x, int y, int color);
+void set_fractal(t_fractal *i);
+
+
+#endif

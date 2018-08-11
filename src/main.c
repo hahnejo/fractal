@@ -1,4 +1,3 @@
-
 #include "fractal.h"
 
 void	correct_usage(void)
@@ -46,6 +45,7 @@ int		main(int argc, char **argv)
 		window_init(i);
 		if (param_check(argv, i) == 0)
 			return (0);
+		set_fractal(i);
 		run_window(i);
 	}
 	else

@@ -31,7 +31,7 @@ void	calc_julia(t_fractal *i)
 	a = 1.5 * (i->x - 400) / (200 * i->zoom) + i->x_move;
 	b = (i->y - 400) / (WIDTH / 6 * i->zoom) + i->y_move;
 	i->iter = -1;
-	i->iter_max = 250;
+	i->iter_max = 100;
 	while (a * a + b * b <= 4 && ++i->iter < i->iter_max)
 	{
 		real = a;

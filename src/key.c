@@ -22,19 +22,19 @@ int		key_hook(int key, t_fractal *i)
 	}
 	key == 69 ? i->zoom *= 1.2 : 0;
 	key == 78 ? i->zoom /= 1.2 : 0;
-	key == 123 ? i->x_move -= 0.15 : 0;
-	key == 124 ? i->x_move += 0.15 : 0;
-	key == 126 ? i->y_move -= 0.15 : 0;
-	key == 125 ? i->y_move += 0.15 : 0;
-	key == 12 ? i->julia_shape += 0.05 : 0;
-	key == 13 ? i->julia_shape -= 0.05 : 0;
+	key == 123 ? i->x_move -= 0.10 : 0;
+	key == 124 ? i->x_move += 0.10 : 0;
+	key == 126 ? i->y_move -= 0.10 : 0;
+	key == 125 ? i->y_move += 0.10 : 0;
+	key == 12 ? i->julia_shape += 0.025 : 0;
+	key == 13 ? i->julia_shape -= 0.025 : 0;
 	key == 45 ? i->n += 1 : 0;
 	key == 46 ? i->n -= 1 : 0;
 	key == 8 ? i->c_coef += 20 : 0;
 	key == 8 ? i->c_coeff += 10 : 0;
 	if (key == 53 || key == 69 || key == 78 || key == 123 || key == 124
 		|| key == 125 || key == 126|| key == 8 || key == 12 || key == 13 ||
-		key == 45 ||key == 46)
+		key == 45 || key == 46)
 		multipthread(i);
 	return (0);
 }
@@ -64,7 +64,7 @@ int		mouse_hook(int key, int x, int y, t_fractal *i)
 		i->y_move += (float)(b / 4);
 		i->zoom *= 1.2;
 	}
-	if (key == 4)
+	if (key == 4 || key == 5)
 		multipthread(i);
 	return (0);
 }

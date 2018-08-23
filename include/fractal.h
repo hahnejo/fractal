@@ -1,65 +1,75 @@
 #ifndef FRACTAL_H
 #define FRACTAL_H
 
-#define WIDTH 900
-#define LENGTH 900
-#include <stdlib.h>
 #include "libft.h"
-#include "math.h"
-#include "pthread.h"
-#include "../minilibx/mlx.h"
-
 #include <stdio.h>
+#include <math.h>
+#include <pthread.h>
+#include "../minilibx/mlx.h"
+#define WIDTH 800
+#define HEIGHT 800
 
-typedef struct s_fractal
+typedef struct		s_fractal
 {
 	void *mlx;
 	void *win;
-	void *image;
-	void *image_ptr;
+	void *img;
+	char *img_ptr;
 
-	double c_real;
-	double c_image;
-	double z_real;
-	double z_image;
-	double x;
-	double y;
-	double x1;
-	double x2;
-	double y1;
-	double y2;
-	double zoom;
-	double temp;
-	double y_max;
-
-	int f_type;
-	int endian;
-	int bpp;
-	int s_l;
-	int iter;
+	int	f_type;
 	int iter_max;
+	int iter;
+	int bpp;
+	int sl;
+	int en;
+	int pointer_x;
+	int pointer_y;
+
+	float x_move;
+	float y_move;
+	float julia_shape;
+
+	int y_max;
 	int color;
-	int mouse_julia;
+	int c_coef;
+	int c_coeff;
+	int n;
 
+	float zoom;
+	double z;
+	double c;
 
-}             t_fractal;
+	double c_a;
+	double c_b;
 
-void mandelbrot_setting(t_fractal *i);
-void *mandelbrot_process(void *tab);
-void mandelbrot_pthread(t_fractal *i);
+	int x;
+	int y;
+}					t_fractal;
 
-int key_operate(int key, t_fractal *i);
-int key_mouse(int key, t_fractal *i);
-int deal_key(int key, t_fractal *i);
-void zoom_in(int x, int y, t_fractal *i);
-void zoom_out(t_fractal *i);
+// mandelbrot.c
+void	init_mandelbrot		(t_fractal *i);
+void	calc_mandelbrot		(t_fractal *i);
+void	*execute_mandelbrot	(void *ft);
 
+void	init_julia			(t_fractal *i);
+void	calc_julia			(t_fractal *i);
+void	*execute_julia		(void *ft);
 
-int exit_success(void);
-int exit_failure(void);
-void display(t_fractal *i);
-void	put_image(t_fractal *i, int x, int y, int color);
-void set_fractal(t_fractal *i);
+void	init_burningship	(t_fractal *i);
+void	calc_burningship	(t_fractal *i);
+void	*execute_burningship(void *ft);
 
+void	init_hydra			(t_fractal *i);
+void	calc_hydra			(t_fractal *i);
+void	*execute_hydra		(void *ft);
+
+// utility.c
+void	pixel_to_image		(t_fractal *i, int x, int y, int color);
+void	multipthread		(t_fractal *i);
+
+// key.c
+int		key_hook			(int key, t_fractal *i);
+int		pointer_hook		(int a, int b, t_fractal *i);
+int		mouse_hook			(int key, int x, int y, t_fractal *i);
 
 #endif

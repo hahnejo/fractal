@@ -1,6 +1,7 @@
 NAME = fractol
 SRC = $(wildcard src/*.c)
 CFLAGS = -Wall -Wextra -Werror
+SANIFLAGS = -g -fsanitize=address
 LIBFTFLAGS = -I include -L src/libft
 MLXFLAGS = -I minilibx -L minilibx -lmlx -framework OpenGL -framework Appkit
 OBJ = $(CFILES:.c =.o)

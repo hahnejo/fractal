@@ -51,6 +51,9 @@ void mandelbrot_pthread(t_fractal *i);
 int key_operate(int key, t_fractal *i);
 int key_mouse(int key, t_fractal *i);
 int deal_key(int key, t_fractal *i);
+void zoom_in(int x, int y, t_fractal *i);
+void zoom_out(t_fractal *i);
+
 
 int exit_success(void);
 int exit_failure(void);

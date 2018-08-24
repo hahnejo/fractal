@@ -12,7 +12,7 @@
 
 #include "fractal.h"
 
-void	correct_usage(void)
+void		correct_usage(void)
 {
 	ft_putendl("Please try one of the following options");
 	ft_putendl("./fractol mandelbrot");
@@ -21,7 +21,7 @@ void	correct_usage(void)
 	ft_putendl("          hydra");
 }
 
-void	open_usage(void)
+void		open_usage(void)
 {
 	ft_putendl("====================Welcome to fractal====================");
 	ft_putendl("\t'- / +' : zoom in and out (do this on num pad)");
@@ -30,9 +30,19 @@ void	open_usage(void)
 	ft_putendl("\t'mouse' : move to change julia and hydra");
 }
 
-// void	pcreate(t_fractal *ft, pthread_t *id, int c, t_fractal *i)
+static void	pcreate(t_fractal ft[8], pthread_t id[8], int c, t_fractal *i)
+{
+	i->f_type == 1 ? pthread_create(&id[c], NULL,
+		*execute_mandelbrot, &ft[c]) : 0;
+	i->f_type == 2 ? pthread_create(&id[c], NULL,
+		*execute_julia, &ft[c]) : 0;
+	i->f_type == 3 ? pthread_create(&id[c], NULL,
+		*execute_burningship, &ft[c]) : 0;
+	i->f_type == 4 ? pthread_create(&id[c], NULL,
+		*execute_hydra, &ft[c]) : 0;
+}
 
-void	multipthread(t_fractal *i)
+void		multipthread(t_fractal *i)
 {
 	t_fractal	ft[8];
 	pthread_t	id[8];
@@ -49,24 +59,14 @@ void	multipthread(t_fractal *i)
 	c = -1;
 	while (++c < 8 && (i->f_type == 1 || i->f_type == 2 ||
 	i->f_type == 3 || i->f_type == 4))
-	{
-		i->f_type == 1 ? pthread_create(&id[c], NULL,
-			*execute_mandelbrot, &ft[c]) : 0;
-		i->f_type == 2 ? pthread_create(&id[c], NULL,
-			*execute_julia, &ft[c]) : 0;
-		i->f_type == 3 ? pthread_create(&id[c], NULL,
-			*execute_burningship, &ft[c]) : 0;
-		i->f_type == 4 ? pthread_create(&id[c], NULL,
-			*execute_hydra, &ft[c]) : 0;
-	}
-	//	pcreate(&ft[8], &id[8], c, i);
+		pcreate(ft, id, c, i);
 	c = -1;
 	while (++c < 8)
 		pthread_join(id[c], NULL);
 	mlx_put_image_to_window(i->mlx, i->win, i->img, 0, 0);
 }
 
-void	pixel_to_image(t_fractal *i, int x, int y, int color)
+void		pixel_to_image(t_fractal *i, int x, int y, int color)
 {
 	int tmp;
 

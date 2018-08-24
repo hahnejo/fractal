@@ -12,24 +12,6 @@
 
 #include "fractal.h"
 
-void	correct_usage(void)
-{
-	ft_putendl("Please try one of the following options");
-	ft_putendl("./fractol mandelbrot");
-	ft_putendl("          julia");
-	ft_putendl("          burningship");
-	ft_putendl("          hydra");
-}
-
-void	open_usage(void)
-{
-	ft_putendl("====================Welcome to fractal====================");
-	ft_putendl("\t'- / +' : zoom in and out (do this on num pad)");
-	ft_putendl("\t'c'     : color change");
-	ft_putendl("\t'q / w' : shape change");
-	ft_putendl("\t'n'     : iteration for hydra");
-}
-
 int		check_param(t_fractal *i, char *str)
 {
 	if (ft_strcmp(str, "mandelbrot") == 0)
@@ -48,7 +30,7 @@ int		check_param(t_fractal *i, char *str)
 	return (1);
 }
 
-void execute_fractal(t_fractal *i)
+void	execute_fractal(t_fractal *i)
 {
 	if (i->f_type == 1)
 	{

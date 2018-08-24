@@ -12,7 +12,7 @@
 
 #include "fractal.h"
 
-void init_mandelbrot(t_fractal *i)
+void	init_mandelbrot(t_fractal *i)
 {
 	i->zoom = 1.0;
 	i->x_move = 0;
@@ -21,7 +21,7 @@ void init_mandelbrot(t_fractal *i)
 	i->c_coeff = 233;
 }
 
-void calc_mandelbrot(t_fractal *i)
+void	calc_mandelbrot(t_fractal *i)
 {
 	double a;
 	double b;
@@ -41,14 +41,14 @@ void calc_mandelbrot(t_fractal *i)
 		i->c_a = real * real - imagi * imagi + a;
 		i->c_b = 2 * real * imagi + b;
 	}
-	if (i->iter < i->iter_max)	
+	if (i->iter < i->iter_max)
 		pixel_to_image(i, i->x, i->y, (1000 * i->iter));
 }
 
-void *execute_mandelbrot(void *ft)
+void	*execute_mandelbrot(void *ft)
 {
 	t_fractal *i;
-	
+
 	i = (t_fractal *)ft;
 	while (i->y < i->y_max)
 	{
@@ -62,5 +62,3 @@ void *execute_mandelbrot(void *ft)
 	}
 	return (NULL);
 }
-
-

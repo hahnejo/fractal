@@ -36,8 +36,10 @@ void	calc_julia(t_fractal *i)
 	{
 		real = a;
 		imagi = b;
-		a = real * real - imagi * imagi + i->c_a + i->julia_shape * i->pointer_x / 225;
-		b = 2 * real * imagi - i->c_b + i->julia_shape * i->pointer_y / 225;
+		a = real * real - imagi * imagi + i->c_a +
+			i->julia_shape * i->pointer_x / 225;
+		b = 2 * real * imagi - i->c_b +
+			i->julia_shape * i->pointer_y / 225;
 	}
 	if (i->iter < i->iter_max)
 		pixel_to_image(i, i->x, i->y, (1000 * i->iter));
@@ -46,7 +48,7 @@ void	calc_julia(t_fractal *i)
 void	*execute_julia(void *ft)
 {
 	t_fractal *i;
-	
+
 	i = (t_fractal *)ft;
 	while (i->y < i->y_max)
 	{

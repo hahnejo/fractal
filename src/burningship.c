@@ -12,7 +12,7 @@
 
 #include "fractal.h"
 
-void init_burningship(t_fractal *i)
+void	init_burningship(t_fractal *i)
 {
 	i->c_coef = 225;
 	i->c_coeff = 233;
@@ -21,7 +21,7 @@ void init_burningship(t_fractal *i)
 	i->zoom = 1.5;
 }
 
-void calc_burningship(t_fractal *i)
+void	calc_burningship(t_fractal *i)
 {
 	double a;
 	double b;
@@ -45,10 +45,10 @@ void calc_burningship(t_fractal *i)
 		pixel_to_image(i, i->x, i->y, (1000 * i->iter));
 }
 
-void *execute_burningship(void *ft)
+void	*execute_burningship(void *ft)
 {
 	t_fractal *i;
-	
+
 	i = (t_fractal *)ft;
 	while (i->y < i->y_max)
 	{

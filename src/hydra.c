@@ -18,7 +18,6 @@ void	init_hydra(t_fractal *i)
 	i->c_b = -0.8;
 	i->c_coef = 25;
 	i->c_coeff = 100;
-	i->n = 2;
 	i->zoom = 1.5;
 }
 
@@ -28,6 +27,7 @@ void	calc_hydra(t_fractal *i)
 	double b;
 	double real;
 	double imagi;
+
 	a = 1.5 * (i->x - 400) / (200 * i->zoom) + i->x_move;
 	b = (i->y - 400) / (WIDTH / 6 * i->zoom) + i->y_move;
 	i->iter = -1;
@@ -37,9 +37,11 @@ void	calc_hydra(t_fractal *i)
 		real = a;
 		imagi = b;
 		a = sin(real * real - imagi * imagi) +
-			pow(M_E, real * real - imagi * imagi) + i->c_a + i->julia_shape * i->pointer_x / 225;
+				pow(M_E, real * real - imagi * imagi) +
+				i->c_a + i->julia_shape * i->pointer_x / 225;
 		b = sin(2 * real * imagi) +
-			pow(M_E, 2 * real * imagi) + i->c_a + i->julia_shape * i->pointer_y / 225;
+				pow(M_E, 2 * real * imagi) +
+				i->c_a + i->julia_shape * i->pointer_y / 225;
 	}
 	if (i->iter < i->iter_max)
 		pixel_to_image(i, i->x, i->y, (1000 * i->iter));
@@ -48,7 +50,7 @@ void	calc_hydra(t_fractal *i)
 void	*execute_hydra(void *ft)
 {
 	t_fractal *i;
-	
+
 	i = (t_fractal *)ft;
 	while (i->y < i->y_max)
 	{

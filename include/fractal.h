@@ -46,7 +46,6 @@ typedef struct		s_fractal
 	int y;
 }					t_fractal;
 
-// mandelbrot.c
 void	init_mandelbrot		(t_fractal *i);
 void	calc_mandelbrot		(t_fractal *i);
 void	*execute_mandelbrot	(void *ft);
@@ -66,7 +65,9 @@ void	*execute_hydra		(void *ft);
 // utility.c
 void	pixel_to_image		(t_fractal *i, int x, int y, int color);
 void	multipthread		(t_fractal *i);
-
+// void	pcreate				(t_fractal *ft, pthread_t *id, int c, t_fractal *i);
+void	correct_usage		(void);
+void	open_usage			(void);
 // key.c
 int		key_hook			(int key, t_fractal *i);
 int		pointer_hook		(int a, int b, t_fractal *i);

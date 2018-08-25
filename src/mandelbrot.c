@@ -33,7 +33,7 @@ void	calc_mandelbrot(t_fractal *i)
 	a = 1.5 * (i->x - 400) / (200 * i->zoom) + i->x_move;
 	b = (i->y - 400) / (WIDTH / 6 * i->zoom) + i->y_move;
 	i->iter = -1;
-	i->iter_max = 100;
+	i->iter_max = 80;
 	while (i->c_a * i->c_a + i->c_b * i->c_b < 4 && ++i->iter < i->iter_max)
 	{
 		real = i->c_a;

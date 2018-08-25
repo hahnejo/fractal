@@ -72,6 +72,7 @@ void	run_window(t_fractal *i)
 	mlx_hook(i->win, 2, 0, key_hook, i);
 	mlx_hook(i->win, 6, 0, pointer_hook, i);
 	mlx_mouse_hook(i->win, mouse_hook, i);
+	mlx_hook(i->win, 17, 0, exit_hook, i);
 	mlx_loop(i->mlx);
 }
 

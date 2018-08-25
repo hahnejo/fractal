@@ -69,4 +69,6 @@ void			open_usage				(void);
 int				key_hook				(int key, t_fractal *i);
 int				pointer_hook			(int a, int b, t_fractal *i);
 int				mouse_hook				(int key, int x, int y, t_fractal *i);
+int				exit_hook				(t_fractal *i);
+
 #endif

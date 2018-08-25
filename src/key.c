@@ -12,20 +12,23 @@
 
 #include "fractal.h"
 
+int		exit_hook(t_fractal *i)
+{
+	mlx_destroy_image(i->mlx, i->img);
+	mlx_destroy_window(i->mlx, i->win);
+	exit(0);
+	return (0);
+}
+
 int		key_hook(int key, t_fractal *i)
 {
-	if (key == 53)
-	{
-		mlx_destroy_image(i->mlx, i->img);
-		mlx_destroy_window(i->mlx, i->win);
-		exit(0);
-	}
+	key == 53 ? exit_hook(i) : 0;
 	key == 69 ? i->zoom *= 1.2 : 0;
 	key == 78 ? i->zoom /= 1.2 : 0;
-	key == 123 ? i->x_move -= 0.05 / (i->zoom) : 0;
-	key == 124 ? i->x_move += 0.05 / (i->zoom) : 0;
-	key == 126 ? i->y_move -= 0.05 / (i->zoom) : 0;
-	key == 125 ? i->y_move += 0.05 / (i->zoom) : 0;
+	key == 123 ? i->x_move -= 0.1 / (i->zoom) : 0;
+	key == 124 ? i->x_move += 0.1 / (i->zoom) : 0;
+	key == 126 ? i->y_move -= 0.1 / (i->zoom) : 0;
+	key == 125 ? i->y_move += 0.1 / (i->zoom) : 0;
 	key == 12 ? i->julia_shape += 0.040 : 0;
 	key == 13 ? i->julia_shape -= 0.040 : 0;
 	key == 8 ? i->c_coef += 20 : 0;

@@ -14,8 +14,8 @@
 
 void	init_hydra(t_fractal *i)
 {
-	i->c_a = 0.5;
-	i->c_b = -0.8;
+	i->c_a = -0.8;
+	i->c_b = 0.156;
 	i->c_coef = 25;
 	i->c_coeff = 100;
 	i->zoom = 1.5;

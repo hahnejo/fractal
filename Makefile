@@ -33,6 +33,6 @@ fclean:
 	rm -rf libft/libft.a
 	rm fractol
 
-re: fclean
+re: fclean $(NAME)
 
 .PHONY : clean fclean re

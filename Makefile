@@ -1,19 +1,26 @@
 NAME = fractol
 SRC = $(wildcard src/*.c)
 CFLAGS = -Wall -Wextra -Werror
-SANIFLAGS = -g -fsanitize=address
-LIBFTFLAGS = -I include -L src/libft
-MLXFLAGS = -I minilibx -L minilibx -lmlx -framework OpenGL -framework Appkit
+LIBFTFLAGS = -I include -L libft
 OBJ = $(CFILES:.c =.o)
+
+ifeq ($(shell uname), Darwin)
+	OS = MAC
+	MLXDIR = minilibx
+	MLXFLAGS = -L minilibx -L /usr/X11/lib  -framework OpenGL -framework CoreFoundation -framework Appkit -lft -lmlx
+else
+	OS = LINUX
+	MLXDIR = minilibx_linux
+	MLXFLAGS = -L minilibx_linux -lft -lmlx -lX11 -lXext -lm
+endif
 
 all: $(NAME)
 
-$(NAME): $(SRC) minilibx/libmlx.a
-	gcc -o $(NAME) $(CFLAGS) $(MLXFLAGS) $(LIBFTFLAGS) $(SRC) src/libft.a
+$(NAME): $(SRC) $(MLXDIR)/libmlx.a
+	gcc -o $(NAME) $(CFLAGS) $(LIBFTFLAGS) $(MLXFLAGS) $(SRC)
 
-minilibx/libmlx.a:
-	cd src/libft && make -f Makefile
-	mv src/libft/libft.a src
+$(MLXDIR)/libmlx.a:
+	cd libft && make -f Makefile
 	cd minilibx && make
 
 clean:
@@ -21,10 +28,11 @@ clean:
 	rm -rf $(NAME)
 
 fclean:
-	cd src/libft && make fclean
+	cd libft && make fclean
 	cd minilibx && make clean
-	rm -rf src/libft.a
+	rm -rf libft/libft.a
+	rm fractol
 
-re: fclean $(NAME)
+re: fclean
 
 .PHONY : clean fclean re

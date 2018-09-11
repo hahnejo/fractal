@@ -6,13 +6,13 @@
 /*   By: hjo <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/24 14:30:39 by hjo               #+#    #+#             */
-/*   Updated: 2018/08/24 14:30:41 by hjo              ###   ########.fr       */
+/*   Updated: 2018/09/09 20:22:35 by hjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTAL_H
 # define FRACTAL_H
-# include "libft.h"
+# include "../libft/include/libft.h"
 # include <math.h>
 # include <pthread.h>
 # include "../minilibx/mlx.h"
